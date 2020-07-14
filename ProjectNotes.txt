@@ -1,0 +1,19 @@
+$npm install npm@latest -g
+
+https://create-react-app.dev/docs/getting-started
+
+1) Add a global command for react 
+$npm i -g create-react-app
+
+2) visual studo Code (user)
+https://code.visualstudio.com
+
+
+$npx create-react-app my-app
+$cd my-app
+$npm start
+
+
+$npm i bootstrap
+
+
