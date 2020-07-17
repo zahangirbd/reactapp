@@ -1,3 +1,4 @@
+0) upgrade npm if it is required 
 $npm install npm@latest -g
 
 https://create-react-app.dev/docs/getting-started
@@ -9,9 +10,19 @@ $npm i -g create-react-app
 https://code.visualstudio.com
 
 
-$npx create-react-app my-app
-$cd my-app
+3) create new project
+$npx create-react-app reactapp
+$cd reactapp
 $npm start
+
+4) For starting the project from github
+$cd reactapp
+$npm install
+$npm start
+
+
+
+
 
 
 $npm i bootstrap
