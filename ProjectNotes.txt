@@ -25,6 +25,23 @@ $cd reactapp
 $npm install
 $npm start
 
+5) setting different port
+Change port: 9000 from 3000 in windows in package.json
+
+"scripts": {
+    "start": “set PORT=9000 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+
+6) Setting proxy for api call a to different server.
+add following line in package.json
+
+"proxy": "http://localhost:3000/api/v1",
+
+
+
 
 $npm i bootstrap
 
@@ -114,4 +131,12 @@ componentDidMount		componentDidUpdate	componentWillUnmount
 	componentDidUpdate(prevProps, prevState){
 		//we can call AJAX call here to get some data from server
 	}
+
+
+
+
+
+
+
+
 

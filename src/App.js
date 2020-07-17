@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/navbar'
 import Counters from './components/counters'
+import Articles from './components/articles'
 
 class App extends Component {
   state = {  
     counters: [
         {id:1, value:4},
         {id:2, value:0},
-        {id:3, value:0},
-        {id:4, value:0},
-        {id:5, value:0},
+        {id:3, value:0}
     ]
 }
 
@@ -50,6 +49,7 @@ handleDelete = (counterId) =>{
           onIncrement={this.handleIncrement}
           onDelete={this.handleDelete}
         />
+        <Articles></Articles>
       </main>
     </React.Fragment> 
     );
