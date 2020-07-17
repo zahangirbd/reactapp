@@ -15,7 +15,7 @@ class Counter extends Component {
     //}
 
     handleIncrement = (product) => {
-        console.log(product);
+        //console.log(product);
         //we need to tell React that state has bee updated by a property.
         this.setState({count: this.state.count+1}); 
     }
