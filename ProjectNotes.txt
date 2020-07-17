@@ -15,6 +15,11 @@ $npx create-react-app reactapp
 $cd reactapp
 $npm start
 
+
+4) install bootstrap
+$npm i bootstrap
+
+
 4) For starting the project from github
 $cd reactapp
 $npm install
