@@ -12,8 +12,8 @@ class Counters extends Component {
         ]
     }
 
-    handleDelete = () =>{
-        console.log("Delete is invoked");
+    handleDelete = (counterId) =>{
+        console.log("Delete is invoked, id=", counterId);
     }
 
     render() { 
