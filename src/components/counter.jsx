@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 class Counter extends Component {
     state = {  
-        count: 0
+        count: this.props
     }
     styles = {
         fontSize: 10,
@@ -21,6 +21,7 @@ class Counter extends Component {
     }
 
     render() { 
+        console.log("props", this.props);
         return (
             <div>
                 <span style={this.styles} className={this.getBadgeClass()}>{this.formatCount()}</span>
@@ -35,7 +36,7 @@ class Counter extends Component {
 
     getBadgeClass() {
         let zclasses = 'badge badge-';
-        zclasses += (this.state.count == 0 ? 'warning' : 'primary');
+        zclasses += (this.state.count === 0 ? 'warning' : 'primary');
         return zclasses;
     }
 
