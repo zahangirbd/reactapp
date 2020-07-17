@@ -46,9 +46,9 @@ handleDelete = (counterId) =>{
       <main className="container">
         <Counters
           counters={this.state.counters}
-          handleReset={this.handleReset} 
-          handleIncrement={this.handleIncrement}
-          handleDelete={this.handleDelete}
+          onReset={this.handleReset} 
+          onIncrement={this.handleIncrement}
+          onDelete={this.handleDelete}
         />
       </main>
     </React.Fragment> 
