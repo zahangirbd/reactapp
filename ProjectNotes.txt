@@ -38,7 +38,12 @@ Note:
 
 	2) onClick={only_function_name_without_bracket}
 	e.g., onClick={this.handleIncrement}
-
-
-
+	
+	3) need to bind this in constructor
+	e.g.,
+constructor(){
+        super();
+        //this is important to make this available when click will be invoked
+        this.handleIncrement = this.handleIncrement.bind(this); 
+    }
 
