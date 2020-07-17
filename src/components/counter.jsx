@@ -9,13 +9,15 @@ class Counter extends Component {
         fontWeight: 'bold'
     }
 
-    constructor(){
-        super();
-        this.handleIncrement = this.handleIncrement.bind(this); //this is important to make this available when click will be invoked
-    }
+    //constructor(){
+    //    super();
+    //    //this is important to make this available when click will be invoked
+    //    this.handleIncrement = this.handleIncrement.bind(this); 
+    //}
 
-    handleIncrement(){
+    handleIncrement = () => {
         console.log("Increment clicked", this);
+        this.state.count++;
     }
 
     render() { 
