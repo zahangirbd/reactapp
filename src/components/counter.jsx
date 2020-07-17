@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 class Counter extends Component {
     state = {  
-        count: this.props
+        value: this.props.value
     }
     styles = {
         fontSize: 10,
@@ -17,7 +17,7 @@ class Counter extends Component {
     handleIncrement = (product) => {
         //console.log(product);
         //we need to tell React that state has bee updated by a property.
-        this.setState({count: this.state.count+1}); 
+        this.setState({value: this.state.value + 1}); 
     }
 
     render() { 
@@ -36,14 +36,14 @@ class Counter extends Component {
 
     getBadgeClass() {
         let zclasses = 'badge badge-';
-        zclasses += (this.state.count === 0 ? 'warning' : 'primary');
+        zclasses += (this.state.value === 0 ? 'warning' : 'primary');
         return zclasses;
     }
 
     formatCount(){
-        const { count } = this.state;
+        const { value } = this.state;
         const z = <h5>Zero</h5>;
-        return count === 0 ? z : count;
+        return value === 0 ? z : value;
     }
 
 }
