@@ -15,10 +15,14 @@ class Counter extends Component {
     //    this.handleIncrement = this.handleIncrement.bind(this); 
     //}
 
-    handleIncrement = () => {
-        console.log("Increment clicked", this);
+    handleIncrement = (product) => {
+        console.log(product);
         //we need to tell React that state has bee updated by a property.
         this.setState({count: this.state.count+1}); 
+    }
+
+    doHandleIncrement = () => {
+        this.handleIncrement({id: 1});
     }
 
     render() { 
@@ -26,7 +30,7 @@ class Counter extends Component {
             <div>
                 <span style={this.styles} className={this.getBadgeClass()}>{this.formatCount()}</span>
                 <button 
-                    onClick={this.handleIncrement}
+                    onClick={this.doHandleIncrement}
                     className="btn btn-secondary btn-sm">Increment
                 </button>
                 <ul>
