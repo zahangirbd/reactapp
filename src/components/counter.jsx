@@ -15,7 +15,7 @@ class Counter extends Component {
     //}
 
     handleIncrement = (product) => {
-        //console.log(product);
+        console.log(product);
         //we need to tell React that state has bee updated by a property.
         this.setState({value: this.state.value + 1}); 
     }
@@ -27,9 +27,11 @@ class Counter extends Component {
                 <h4>{this.props.id}</h4>
                 <span style={this.styles} className={this.getBadgeClass()}>{this.formatCount()}</span>
                 <button 
-                    onClick={()=> this.handleIncrement({id:1})}
+                    onClick={()=> this.handleIncrement({param_id:1})}
                     className="btn btn-secondary btn-sm">Increment
                 </button>
+                <button className="btn btn-danger btn-sm m-2" 
+                    onClick={this.props.onDelete}>Delete</button>
             </div>
         );
     }
