@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Articles extends Component {
     state = { 
@@ -8,29 +9,30 @@ class Articles extends Component {
 
 
     componentDidMount() {
-        fetch("/articles")
-          .then(res => res.json())
-          .then(
-            (result) => {
-
-              if(result.status === "SUCCESS"){
+        axios
+        .get("/articles")
+        .then(response => {
+            console.log(response);
+            if(response.status === 200){
+                if(response.data.status === "SUCCESS"){
+                    this.setState({
+                        isLoaded: true,
+                        items: response.data.data
+                      });    
+                  }              
+            } else {
                 this.setState({
                     isLoaded: true,
-                    items: result.data
-                  });    
-              }
-                
-            },
-            // Note: it's important to handle errors here
-            // instead of a catch() block so that we don't swallow
-            // exceptions from actual bugs in components.
-            (error) => {
-              this.setState({
+                    error:{ message: response.statusText}
+                  });
+            }
+        })
+        .catch(function(error) {
+            this.setState({
                 isLoaded: true,
                 error
               });
-            }
-          )
+        });
       }     
 
     render() { 
@@ -48,6 +50,7 @@ class Articles extends Component {
                             <li key={itm.id}>{itm.title}</li>
                         )}
                     </ul>
+
                 </div>
             );
         }
