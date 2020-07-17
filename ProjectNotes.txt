@@ -28,6 +28,7 @@ $npm start
 
 $npm i bootstrap
 
+https://www.youtube.com/watch?v=Ke90Tje7VS0
 
 Note: 
 	1) In map we must need set key
@@ -46,4 +47,71 @@ constructor(){
         //this is important to make this available when click will be invoked
         this.handleIncrement = this.handleIncrement.bind(this); 
     }
+
+	4) state{} is called once in a component during initialization. Therefore, if we change the props value it doesn't change the local state. 
+
+	
+	5) Using ... we can clone object 
+	e.g., const counters = [...this.state.counters];
+
+
+	6) When need to combine some different components we can use <div> or <React.Fragment>
+	e.g., 
+    <React.Fragment>
+      <NavBar/>
+      <main role="main" class="container">
+        <Counters></Counters>
+      </main>
+    </React.Fragment>
+
+	7) Destructuring Arguments
+	e.g.,
+const NavBar = ({totalCounters}) => {
+    return ( 
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand" href="#">Navbar{" "}
+                <span className="badge badge-pill badge-secondary">{totalCounters}</span>
+            </a>
+        </nav>
+     );
+}
+ 
+
+
+Here, totalCounters are coming from the caller function from a 
+<NavBar totalCounters={this.state.counters.filter(c=> c.value > 0).length}/>
+
+
+If we have multiple properties in NavBar then only 'totalCounters' will be passed to the above function. 
+
+
+	7) Lifecycle Hooks
+	
+MOUNT				UPDATE			UNMOUNT
+constructor			
+render				render
+componentDidMount		componentDidUpdate	componentWillUnmount
+
+
+
+	constructor(props){ //if we define with 'props' then only we get the value. If we don't in the parameter then we shall not be able to use it lar
+		super();
+		//here we can directly set the state. if we use setState the it will throw a problem as the object is not initiaized yet. 
+		this.state = this.props.something
+	}
+
+
+
+	componentDidMount(){
+		//we can call AJAX call here to get some data from server
+		//we can set here by using, this.setState({movie});
+	}
+
+
+	//we shall not be able to use any Lifecyle Hook in the Stateless functional component
+
+
+	componentDidUpdate(prevProps, prevState){
+		//we can call AJAX call here to get some data from server
+	}
 
