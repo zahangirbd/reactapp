@@ -29,5 +29,16 @@ $npm start
 $npm i bootstrap
 
 
+Note: 
+	1) In map we must need set key
+	e.g., 
+	  <li>
+		{this.state.tags.map(tag=><li key={tag}>{tag}</li>)}
+	  </li>
+
+	2) onClick={only_function_name_without_bracket}
+	e.g., onClick={this.handleIncrement}
+
+
 
 

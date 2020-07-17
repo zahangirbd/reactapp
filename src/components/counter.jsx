@@ -9,11 +9,18 @@ class Counter extends Component {
         fontWeight: 'bold'
     }
 
+    handleIncrement(){
+        console.log("Increment clicked")
+    }
+
     render() { 
         return (
             <div>
                 <span style={this.styles} className={this.getBadgeClass()}>{this.formatCount()}</span>
-                <button className="btn btn-secondary btn-sm">Increment</button>
+                <button 
+                    onClick={this.handleIncrement}
+                    className="btn btn-secondary btn-sm">Increment
+                </button>
                 <ul>
                     {this.state.tags.map(tag=><li key={tag}>{tag}</li>)}
                 </ul>
