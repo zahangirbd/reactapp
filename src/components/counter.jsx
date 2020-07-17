@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 class Counter extends Component {
     state = {  
-        count: 0,
-        tags : ['tag1', 'tag2', 'tag3']
+        count: 0
     }
     styles = {
         fontSize: 10,
@@ -29,9 +28,6 @@ class Counter extends Component {
                     onClick={()=> this.handleIncrement({id:1})}
                     className="btn btn-secondary btn-sm">Increment
                 </button>
-                <ul>
-                    {this.state.tags.map(tag=><li key={tag}>{tag}</li>)}
-                </ul>
             </div>
         );
     }
