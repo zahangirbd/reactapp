@@ -12,7 +12,7 @@ class Articles extends Component {
         axios
         .get("/articles")
         .then(response => {
-            console.log(response);
+            //console.log(response);
             if(response.status === 200){
                 if(response.data.status === "SUCCESS"){
                     this.setState({

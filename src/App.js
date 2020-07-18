@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/navbar'
 import Counters from './components/counters'
 import Articles from './components/articles'
+import Article from './components/article'
 
 class App extends Component {
   state = {  
@@ -50,6 +51,7 @@ handleDelete = (counterId) =>{
           onDelete={this.handleDelete}
         />
         <Articles></Articles>
+        <Article></Article>
       </main>
     </React.Fragment> 
     );
