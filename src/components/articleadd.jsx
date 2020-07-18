@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class Article extends Component {
+class ArticleAdd extends Component {
     state = { 
         title:'',
         body: ''
@@ -79,4 +79,4 @@ class Article extends Component {
     }
 }
  
-export default Article;
+export default ArticleAdd;
