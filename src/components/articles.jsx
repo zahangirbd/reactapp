@@ -1,60 +1,36 @@
 
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
+import ArticleItem from './articleitem'
 
-class Articles extends Component {
-    state = { 
-        items : ['item1', 'item2']
-     }
-
-
-    componentDidMount() {
-        axios
-        .get("/articles")
-        .then(response => {
-            //console.log(response);
-            if(response.status === 200){
-                if(response.data.status === "SUCCESS"){
-                    this.setState({
-                        isLoaded: true,
-                        items: response.data.data
-                      });    
-                  }              
-            } else {
+const Articles = () => { 
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState({});
+    
+    //it is used when component is mounted. safe for AJAX call
+    useEffect(()=>{
+        const fetchItems = async () =>{
+            setLoading(true);
+            const res = await axios.get("/articles").catch((error) => {
+                console.log(error);
                 this.setState({
-                    isLoaded: true,
-                    error:{ message: response.statusText}
-                  });
-            }
-        })
-        .catch(function(error) {
-            this.setState({
-                isLoaded: true,
-                error
-              });
-        });
-      }     
-
-    render() { 
-        const { error, isLoaded, items } = this.state;
-        if(error){
-            return <div> Error: {error.message} </div>;
-        } else if (!isLoaded){
-            return <div> Loading... </div>;
-        } else {
-            return (
-                <div>
-                    <h1>Articles</h1>
-                    <ul>
-                        {items.map( itm => 
-                            <li key={itm.id}>{itm.title}</li>
-                        )}
-                    </ul>
-
-                </div>
-            );
+                    loading: true,
+                    error
+                });
+            });
+            setItems(res.data.data);
+            setLoading(false);
         }
-    }
+        fetchItems();
+    }, []);
+
+    return (
+        <div className='container mt-5'>
+            <h1 className='text-primary mb-3'> Articles </h1>
+            <ArticleItem items={items} loading={loading}></ArticleItem>
+        </div>
+    );	
 }
  
 export default Articles;

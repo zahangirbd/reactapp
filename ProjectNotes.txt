@@ -16,8 +16,9 @@ $cd reactapp
 $npm start
 
 
-4) install bootstrap
+4) install bootstrap & other packages
 $npm i bootstrap
+$npm install axios 
 
 
 4) For starting the project from github

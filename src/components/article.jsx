@@ -35,7 +35,7 @@ class Article extends Component {
         axios
         .post("/articles", body)
         .then((response) => {
-            console.log(response);
+            //console.log(response);
             if(response.status === 200){
                 if(response.data.status === "SUCCESS"){
                     this.setState({
