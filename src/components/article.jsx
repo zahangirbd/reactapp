@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ArticleItem = ({items, loading}) =>{
+const Article = ({items, loading}) =>{
     if(loading){
         return <div> Loading... </div>;
     }
@@ -12,4 +12,4 @@ const ArticleItem = ({items, loading}) =>{
     </ul>; 
 }
 
-export default ArticleItem;
+export default Article;

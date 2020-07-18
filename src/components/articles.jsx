@@ -1,7 +1,7 @@
 
 import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
-import ArticleItem from './articleitem'
+import Article from './article'
 
 const Articles = () => { 
     const [items, setItems] = useState([]);
@@ -28,7 +28,7 @@ const Articles = () => {
     return (
         <div className='container mt-5'>
             <h1 className='text-primary mb-3'> Articles </h1>
-            <ArticleItem items={items} loading={loading}></ArticleItem>
+            <Article items={items} loading={loading}></Article>
         </div>
     );	
 }

@@ -43,7 +43,10 @@ class ArticleAdd extends Component {
                         id: response.data.data.id,
                         title: response.data.data.title,
                         body: response.data.data.body 
-                    });                    
+                    });
+                    
+                    //just notifying the parent componet to update the UI
+                    this.props.onArticleAdd();
                 }              
             } else {
                 this.setState({

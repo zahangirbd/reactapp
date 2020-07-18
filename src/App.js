@@ -39,6 +39,10 @@ handleDelete = (counterId) =>{
     this.setState({counters:counters});
 }
 
+handleOnArticleAdd = ()=>{
+  console.log("handleOnArticleAdd invoked", this);
+}
+
   render () {
     return (
     <React.Fragment>
@@ -51,7 +55,7 @@ handleDelete = (counterId) =>{
           onDelete={this.handleDelete}
         />
         <Articles></Articles>
-        <ArticleAdd></ArticleAdd>
+        <ArticleAdd onArticleAdd={this.handleOnArticleAdd}></ArticleAdd>
       </main>
     </React.Fragment> 
     );
