@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 import NavBar from './components/navbar'
 import Counters from './components/counters'
@@ -11,7 +12,10 @@ class App extends Component {
         {id:1, value:4},
         {id:2, value:0},
         {id:3, value:0}
-    ]
+    ],
+    items: [],
+    loading: false,
+    itemReloadState: false
 }
 
 handleReset = ()=> {
@@ -39,8 +43,40 @@ handleDelete = (counterId) =>{
     this.setState({counters:counters});
 }
 
+//Lifecyle hook event - it is invoked onece the component is ready
+//this is the palce we can invoke AJAX call
+componentDidMount(){
+  //console.log("App - componentDidMount invoked");
+  this.fetchArticlesFromServer();
+}
+
+//Lifecyle hook event - when an state is updated
+componentDidUpdate(prevProps, prevState) {
+  //console.log('App - componentDidUpdate invoked, itemReloadState = ' + this.state.itemReloadState);
+  //we just need to check whether itemReloadState is changed or not. 
+  //if itemReloadState is changed then we need to reload Article items using AJAX call 
+  if (prevState.itemReloadState !== this.state.itemReloadState) {
+    //console.log('App - componentDidUpdate invoked itemReloadState state has changed.');
+    this.fetchArticlesFromServer();
+  }
+}
+
+fetchArticlesFromServer = async () => {
+  this.setState({loading: true});
+  const res = await axios.get("/articles").catch((error) => {
+      console.log(error);
+      this.setState({
+          loading: true,
+          error
+      });
+  });
+  this.setState({items: res.data.data});
+  this.setState({loading: false});
+}
+
 handleOnArticleAdd = ()=>{
-  console.log("handleOnArticleAdd invoked", this);
+  console.log("App - handleOnArticleAdd invoked");
+  this.setState({itemReloadState: !this.state.itemReloadState});
 }
 
   render () {
@@ -54,7 +90,7 @@ handleOnArticleAdd = ()=>{
           onIncrement={this.handleIncrement}
           onDelete={this.handleDelete}
         />
-        <Articles></Articles>
+        <Articles items={this.state.items} loading={this.state.loading}></Articles>
         <ArticleAdd onArticleAdd={this.handleOnArticleAdd}></ArticleAdd>
       </main>
     </React.Fragment> 

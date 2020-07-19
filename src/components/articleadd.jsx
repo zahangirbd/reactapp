@@ -23,7 +23,7 @@ class ArticleAdd extends Component {
 
     handleSave = ()=> {
         //console.log("Handle save called.", this);
-        console.log("handleSave:", this.state.title, this.state.body);
+        console.log("ArticleAdd - handleSave:", this.state.title, this.state.body);
         this.submitToServer();
     }
 
