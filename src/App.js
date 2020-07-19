@@ -5,6 +5,7 @@ import NavBar from './components/navbar'
 import Counters from './components/counters'
 import Articles from './components/articles'
 import ArticleAdd from './components/articleadd'
+import Todos from './components/todos'
 
 class App extends Component {
   state = {  
@@ -92,6 +93,7 @@ handleOnArticleAdd = ()=>{
         />
         <Articles items={this.state.items} loading={this.state.loading}></Articles>
         <ArticleAdd onArticleAdd={this.handleOnArticleAdd}></ArticleAdd>
+        <Todos />
       </main>
     </React.Fragment> 
     );
